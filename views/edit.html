@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=0.86, maximum-scale=5.0, minimum-scale=0.86">
+    <link rel="stylesheet" href="../public/css/default.css">
+    <link rel="stylesheet" href="../public/css/mainPage.css">
+    <link rel="stylesheet" href="../public/css/edit.css">
+    <link rel="stylesheet" href="../public/css/animations.css">
+    <link rel="preload" as="image" href="./public/images/darkBackground.webp">
+    <link rel="preload" as="image" href="./public/images/lightBackground.webp">
+    <script src="https://kit.fontawesome.com/b21388a08f.js" crossorigin="anonymous"></script>
+    <link crossorigin="anonymous" rel="preload" as="image" href="{{photoSource}}">
+    <title>Edit Page</title>
+</head>
+<body>
+    <div class="blur-background"></div>
+    <div class="bar-wrapper">
+        <div class="bar">
+            <div class="bar-options">
+                <div class="option" onclick="showFilters();">
+                    <button>
+                        <i class="fa-solid fa-wand-magic-sparkles"></i>
+                    </button>
+                    <p>Filters</p>
+                </div>
+                <div class="option" onclick="showMasks();">
+                    <button >
+                        <i class="fa-solid fa-shapes"></i>
+                    </button>
+                    <p>Masks</p>
+                </div>
+                <!-- <div class="option" onclick="showTags();">
+                    <button >
+                        <i class="fa-solid fa-tag"></i>
+                    </button>
+                    <p>Tags</p>
+                </div> -->
+                <div class="option" onclick="showRotations();">
+                    <button >
+                        <i class="fa-solid fa-rotate"></i>
+                    </button>
+                    <p>Rotate</p>
+                </div>
+                <div class="option" onclick="showAnimations();">
+                    <button >
+                        <i class="fa-solid fa-circle-play"></i>
+                    </button>
+                    <p>Animations</p>
+                </div>
+        </div>
+        </div>
+    </div>
+    <div class="elements">
+        <div class="element active" id="filters">
+            <div class="filter-options">
+                <div class="filter-option">
+                    <label for="contrast">Contrast</label>
+                    <div class="slider">
+                        <input type="range" id="contrast" value="100" min="0" max="200" oninput="this.nextElementSibling.value = this.value;setFilter('contrast', `${this.value}`, '%')">
+                        <output>100</output>
+                    </div>
+                </div>
+                <div class="filter-option">
+                    <label for="blur">Blur</label>
+                    <div class="slider">
+                        <input type="range" id="blur" value="0" min="0" max="20" oninput="this.nextElementSibling.value = this.value;setFilter('blur', `${this.value}`, 'px')">
+                        <output>0</output>
+                    </div>
+                </div>
+                <div class="filter-option">
+                    <label for="brightness">Brightness</label>
+                    <div class="slider">
+                        <input type="range" id="brightness" value="100" min="0" max="200" oninput="this.nextElementSibling.value = this.value;setFilter('brightness', `${this.value}`, '%')">
+                        <output>100</output>
+                    </div>
+                </div>
+                <div class="filter-option">
+                    <label for="saturation">Saturation</label>
+                    <div class="slider">
+                        <input type="range" id="saturation" value="100" min="0" max="200" oninput="this.nextElementSibling.value = this.value;setFilter('saturate', `${this.value}`, '%')">
+                        <output>100</output>
+                    </div>  
+                </div>
+                <div class="filter-option">
+                    <label for="grayscale">Grayscale</label>
+                    <div class="slider">
+                        <input type="range" id="grayscale" value="0" min="0" max="100" oninput="this.nextElementSibling.value = this.value;setFilter('grayscale', `${this.value}`, '%')">
+                        <output>0</output>
+                    </div>
+                </div>
+                <div class="filter-option">
+                    <label for="sepia">Sepia</label>
+                    <div class="slider">
+                        <input type="range" id="sepia" value="0" min="0" max="200" oninput="this.nextElementSibling.value = this.value;setFilter('sepia', `${this.value}`, '%')">
+                        <output>0</output>
+                    </div>
+                </div>
+                <div class="filter-option">
+                    <label for="invert">Invert</label>
+                    <div class="slider">
+                        <input type="range" id="invert" value="0" min="0" max="100" oninput="this.nextElementSibling.value = this.value;setFilter('invert', `${this.value}`, '%')">
+                        <output>0</output>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="element hidden" id="masks">
+            <div class="icon-options">
+                <div class="icon-option">
+                    <button id="clipBtn">
+                        <i class="fa-solid fa-crop"></i>
+                    </button>
+                </div>
+                <div class="icon-option">
+                    <button id="star-mask">
+                        <i class="fa-solid fa-star"></i>
+                    </button>
+                </div>
+                <div class="icon-option">
+                    <button id="heart-mask">
+                        <i class="fa-solid fa-heart fa-beat"></i>
+                    </button>
+                </div>
+                <div class="icon-option">
+                    <button id="circle-mask">
+                        <i class="fa-solid fa-circle"></i>
+                    </button>
+                </div>
+                <div class="icon-option">
+                    <button id="square-mask">
+                        <i class="fa-solid fa-square"></i>
+                    </button>
+                </div>
+                <div class="icon-option">
+                    <button id="diamond-mask">
+                        <i class="fa-solid fa-diamond"></i>
+                    </button>
+                </div>
+                <div class="icon-option">
+                    <button id="cloud-mask">
+                        <i class="fa-solid fa-cloud"></i>
+                    </button>
+                </div>
+                <div class="icon-option">
+                    <button id="clover-mask">
+                        <i class="fa-solid fa-clover"></i>
+                    </button>
+                </div>
+                <div class="icon-option">
+                    <button id="crown-mask">
+                        <i class="fa-solid fa-crown"></i>
+                    </button>
+                </div>
+                <div class="icon-option">
+                    <button id="moon-mask">
+                        <i class="fa-solid fa-moon"></i>
+                    </button>
+                </div>
+                <div class="icon-option">
+                    <button id="sun-mask">
+                        <i class="fa-solid fa-sun"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div class="element hidden" id="tags">
+            no idea for this
+        </div>
+        <div class="element hidden" id="animations">
+            <div class="icon-options">
+                <div class="icon-option">
+                    <button onclick="hueAnimation()">
+                        <i id="hue-icon" class="fa-solid fa-palette"></i>
+                    </button>
+                </div>
+                <div class="icon-option">
+                    <button onclick="sunAnimation()">
+                        <i id="sun-icon" class="fa-solid fa-sun"></i>
+                    </button>
+                </div>
+                <div class="icon-option">
+                    <button onclick="opacityAnimation()">
+                        <i id="opacity-icon" class="fa-solid fa-droplet"></i>
+                    </button>
+                </div>
+                <div class="icon-option">
+                    <button onclick="scaleAnimation()">
+                        <i id="scale-icon" class="fa-solid fa-maximize"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div class="element hidden" id="rotations">
+            <div class="rotate-options">
+                <div class="rotate-option">
+                    <button onclick="setRotation('right')">
+                        <i class="fa-solid fa-rotate-right"></i>
+                    </button>
+                    <p>To right</p>
+                </div>
+                <div class="rotate-option">
+                    <button onclick="setRotation('left')">
+                        <i class="fa-solid fa-rotate-left"></i>
+                    </button>
+                    <p>To left<span style="color: transparent;">a</span></p>
+                </div>
+                <div class="rotate-option">
+                    <button class="flip" onclick="setFlipX()">
+                        <i class="fa-solid fa-arrow-down"></i>
+                        <i class="fa-solid fa-minus"></i>
+                        <i class="fa-solid fa-arrow-up"></i>
+                    </button>
+                    <p>Flip horizontal</p>
+                </div>
+                <div class="rotate-option">
+                    <button style="transform: rotate(90deg);" class="flip" onclick="setFlipY()">
+                        <i class="fa-solid fa-arrow-down"></i>
+                        <i class="fa-solid fa-minus"></i>
+                        <i class="fa-solid fa-arrow-up"></i>
+                    </button>
+                    <p>Flip vertical</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="edit">
+        <button onclick="changeTheme(this)" id="theme"><i class="fa-solid fa-sun-o"></i></button>
+        <div class="mask" id="image-mask">
+            <img id="edit-img" {{#mpicId}} data-mpic-id={{mpicId}} {{/mpicId}} src="{{photoSource}}" crossorigin="anonymous" alt="" style="transform: rotateX(0deg) rotateY(0deg) rotate(0deg);">
+        </div>
+        <div class="edit-buttons">
+            <button type="button" id="edit-save">Save</button>
+            <button type="button" id="edit-update" class="hidden" onclick="updateImage()">Update</button>
+            <button type="button" id="restoreBtn" class="hidden" onclick="restoreImage();">Restore</button>
+            <button type="button" id="edit-download" onclick="addDownloadLink();">Download</button>
+        </div>
+        <button type="button" id="edit-back" onclick="toPage('./myAccount')">Back</button>
+    </div>
+
+    <div id="mpic-pop-up" class="modal">
+        <div class="mpic-fancy-input">
+            <input id="mpic-input" class="mpic-text" type="text" placeholder="add description">
+            <button id="mpic-enter" class="mpic-enter" type="button" onclick="postImage();"><i id="mpic-icon" class="fa fa-camera camera"></i></button>
+        </div>     
+    </div>
+
+    <script defer src="./public/js/showActive.js"></script>
+    <script src="./public/js/theme.js"></script>
+    <script src="./public/js/anim.js"></script>
+    <script defer src="./public/js/showEdit.js"></script>
+    <script defer src="./public/js/filter.js"></script>
+    <script defer src="./public/js/rotate.js"></script>
+    <script defer src="./public/js/masks.js"></script>
+    <script defer src="./public/js/saveImage.js"></script>
+    <script defer src="./public/js/toPage.js"></script>
+    <script defer src="./public/js/animations.js"></script>
+</body>
+</html>

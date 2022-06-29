@@ -1,0 +1,151 @@
+body{
+    margin:0;
+    padding:0;
+    font-size: 1.2rem;
+}
+
+article{
+    /* background-color: rgb(240, 231, 231); */
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    padding: 1.2rem;
+    padding-left: 8rem;
+    padding-right: 8rem;
+}
+
+h1{
+    text-align: center;
+}
+
+h2{
+    border-bottom-style: outset;
+}
+
+h3{
+    margin-left: 1.3rem;
+}
+
+h4{
+    margin-left: 2.7rem;
+}
+
+h5{
+    margin-left: 4rem;
+}
+
+li{
+    color: rgb(9, 5, 63);
+}
+li a{
+    color: rgb(25, 13, 192);
+}
+
+.img-c4-diagram{
+    padding-top: 3rem;
+    width:100%;
+    padding-bottom: 3rem;
+}
+
+.img-c4-diagram.level1{
+    width:70%;
+}
+
+/* .img-first{
+    width:40px;
+} */
+
+figcaption{
+    text-align: center;
+    font-weight: bold;
+    width:70%;
+}
+
+figure{
+    display:flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+}
+
+.screenshots{
+    width:70%;
+}
+
+.screenshots-nav{
+    width:90%;
+}
+
+.screenshots-element{
+    width:40%;
+}
+
+table {
+    line-height: 1.5;
+    word-wrap: break-word;
+    box-sizing: border-box;
+    border-spacing: 0;
+    border-collapse: collapse;
+    border-color: gray;
+    margin-top: 0;
+    margin-bottom: 16px;
+    display: block;
+    width: max-content;
+    max-width: 100%;
+    overflow: auto;
+}
+
+thead {
+    box-sizing: border-box;
+    display: table-header-group;
+    vertical-align: middle;
+    border-color: inherit;
+    border-spacing: 0;
+    border-collapse: collapse;
+}
+
+tr {
+    background-color: #ffffff;
+    border-top: 1px solid hsla(210,18%,87%,1);
+    box-sizing: border-box;
+    display: table-row;
+    vertical-align: inherit;
+    border-color: inherit;
+}
+
+th {
+    font-weight: 600;
+    padding: 6px 13px;
+    border: 1px solid hsla(210,18%,87%,1);
+    display: table-cell;
+    vertical-align: inherit;
+    font-weight: bold;
+    text-align: center;
+}
+
+td {
+    padding: 6px 13px;
+    border: 1px solid hsla(210,18%,87%,1);
+    box-sizing: border-box;
+    display: table-cell;
+    vertical-align: inherit;
+}
+
+@media only screen and (max-width:400px){
+    body{
+        font-size: 1rem;
+    }
+
+    article{
+        padding: 1rem;
+    }
+
+    .screenshots, .screenshots-nav, .screenshots-element {
+        width:100%;
+    }
+
+    figcaption{
+        text-align: center;
+        font-size: 0.8rem;
+        width:100%;
+    }
+}
+

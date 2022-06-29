@@ -1,0 +1,436 @@
+@import "fontImporter.css";
+
+body {
+    grid-template-areas:
+        "nav nav nav nav nav"
+        "bar gal gal gal gal";
+}
+
+.bar {
+    grid-area: bar;
+    display: flex;
+    width: 20vw;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    background-color: var(--menu-color);
+    /* max-width: 0; */
+    /* opacity: 0; */
+    transition: max-width ease-in-out 1s 0.8s, opacity ease-in-out 1s 0s;
+    padding: 3rem 0;
+}
+
+#profile-photo {
+    position: relative;
+    max-width: 13rem;
+    height: auto;
+    border-radius: 20px;
+}
+
+.other-options {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    gap: 1rem;
+}
+
+.other-option {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 0.5rem;
+    background: transparent;
+    border: none;
+}
+
+.other-option .fa-solid,
+.fa-trash {
+    color: var(--button-color);
+    font-size: 1.3rem;
+}
+
+.other-option {
+    font-size: 1rem;
+    font-family: "Lora", serif;
+}
+
+.main-options {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.main-options button,
+.connect-button,
+.form-submit button {
+    border: none;
+    background-color: var(--button-color);
+    border-radius: 5px;
+    font-size: 1.3rem;
+    font-family: "Lora", serif;
+    padding: 0.7rem 2rem;
+}
+
+.connect-button {
+    background-color: #3da9fc;
+    font-size: 1rem;
+}
+
+.form-submit button {
+    padding: 0.4rem;
+}
+
+#menuBar {
+    display: none;
+}
+
+#delete {
+    background-color: transparent;
+    font-size: 1rem;
+}
+
+.hide {
+    display: none;
+}
+
+.mobile-bar {
+    grid-template-areas:
+        "nav nav nav nav nav"
+        "bar bar bar bar bar";
+}
+
+.connections {
+    display: grid;
+    justify-self: center;
+    grid-template-columns: repeat(2, 1fr);
+    grid-area: gal;
+    grid-template-areas: "unsplash twitter";
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 3rem;
+    width: 66%;
+    height: 100%;
+    padding: 0 20%;
+}
+
+.connection {
+    display: flex;
+    flex-direction: column;
+    background-color: var(--menu-color);
+    border-radius: 10px;
+    justify-content: center;
+    align-items: center;
+    font-size: 10rem;
+    padding: 1rem;
+    gap: 2rem;
+}
+
+#unsplash {
+    grid-area: unsplash;
+}
+
+#twitter {
+    grid-area: twitter;
+}
+
+.settings {
+    grid-area: gal;
+    display: flex;
+    width: 100%;
+    height: 100%;
+    align-items: center;
+    justify-content: center;
+}
+
+.form {
+    padding: 3rem 2rem 2rem;
+    position: relative;
+    gap: 3rem;
+    width: 23rem;
+}
+
+.form-data {
+    gap: 1rem;
+}
+
+.form-field {
+    gap: 0.5rem;
+    font-family: "Lora", serif;
+}
+
+.form-submit {
+    gap: 1rem;
+    font-family: "Lora", serif;
+}
+
+.form-field label {
+    font-size: 1.3rem;
+    font-family: "Lora", serif;
+}
+
+.form-field input {
+    height: 2rem;
+    padding: 0 1rem;
+    width: 100%;
+    font-family: "Lora", serif;
+}
+
+.edit-field {
+    position: relative;
+}
+
+.edit-field .fa {
+    position: absolute;
+    right: 0.15rem;
+    top: 25%;
+}
+
+.edit-field input {
+    width: 100%;
+}
+
+.form button {
+    font-size: 1.3rem;
+    font-family: "Lora", serif;
+}
+
+.connected {
+    background-color: red;
+}
+
+.form {
+    background-color: var(--menu-color);
+    backdrop-filter: none;
+}
+
+.delete-mpic, .lock-mpic {
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.5rem;
+    border: none;
+    background-color: var(--main-color);
+    border-radius: 5px;
+    padding: 0.2rem;
+    transform: translateY(130%);
+    transition: transform 0.5s ease-in-out;
+}
+
+.delete-mpic {
+    bottom: 0.5rem;
+    right: 0.5rem;
+}
+
+.lock-mpic {
+    bottom: 0.5rem;
+    left: 0.5rem;
+}
+
+.lock-mpic .fa-lock, .lock-mpic .fa-unlock {
+    color: var(--button-color);
+}
+
+.delete-mpic .fa-trash {
+    color: red;
+}
+
+.gallery-item:hover .delete-mpic, .gallery-item:hover .lock-mpic {
+    transform: translateY(0);
+}
+
+#button-upload-image {
+    height: 100%;
+    width: 100%;
+    font-size: 1.5rem;
+    background-color: var(--menu-color);
+    display: flex;
+    gap: 1rem;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: rgba(255, 255, 254, 0.6);
+    border: none;
+}
+
+#button-upload-image i {
+    font-size: 4rem;
+    color: var(--button-color);
+}
+
+.upload-form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--menu-color);
+    gap: 2rem;
+    border-radius: 15px;
+    padding: 4rem;
+}
+
+.upload-file-design {
+    background-color: rgba(255, 255, 255, 0.9);
+    color: var(--menu-color);
+    font-size: 1.5rem;
+    padding: 0.8rem;
+    border-radius: 15px;
+}
+
+.upload-file-design:hover {
+    cursor: pointer;
+}
+
+input[type="file"] {
+    display: none;
+}
+
+input.tweet-text {
+    border-style: none;
+    background: transparent;
+    outline: none;
+    width: 90%;
+}
+
+button.tweet-enter {
+    padding: 0;
+    background: none;
+    border: none;
+    outline: none;
+}
+
+@-webkit-keyframes gradient {
+    0% {
+        background-position: 0 0;
+    }
+    100% {
+        background-position: 100% 0;
+    }
+}
+
+@keyframes gradient {
+    0% {
+        background-position: 0 0;
+    }
+    100% {
+        background-position: 100% 0;
+    }
+}
+
+.tweet-fancy-input {
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    width: 35rem;
+    height: 7rem;
+    max-width: 100%;
+    margin: 0 auto;
+    border-radius: 2px;
+    padding: 1.4rem 2rem 1.6rem;
+    background: var(--menu-color);
+}
+
+.tweet-fancy-input:after {
+    content: "";
+    position: absolute;
+    left: 0px;
+    right: 0px;
+    bottom: 0px;
+    height: 7px;
+    border-bottom-left-radius: 2px;
+    border-bottom-right-radius: 2px;
+    background-position: 0% 0%;
+    background: linear-gradient(
+        to right,
+        #1DA1F2,
+        var(--main-color),
+        #1DA1F2,
+        var(--main-color),
+        #1DA1F2,
+        var(--main-color)
+
+    );
+    background-size: 500% auto;
+    -webkit-animation: gradient 3s linear infinite;
+    animation: gradient 3s linear infinite;
+}
+
+.tweet-fancy-input input {
+    flex-grow: 1;
+    color: #bfd2ff;
+    font-size: 2rem;
+    line-height: 3rem;
+    vertical-align: middle;
+}
+
+.tweet-fancy-input input::-webkit-input-placeholder {
+    color: rgba(255, 255, 255, 0.4);
+}
+
+.tweet {
+    color: rgb(29, 155, 240);
+    font-size: 2.8rem;
+    line-height: 3rem;
+    vertical-align: middle;
+    transition: color 0.25s;
+}
+
+.fa.fa-twitter.tweet:hover {
+    color: #bfd2ff;
+}
+
+@media (max-width: 42rem) {
+    .connections {
+        grid-template-columns: 20vh;
+        grid-template-areas:
+            "unsplash"
+            "twitter";
+    }
+    .connection {
+        font-size: 5rem;
+    }
+}
+
+#upload-description {
+    border: 2px solid rgba(255, 255, 255, 0.9);
+    color: rgba(255, 255, 255, 0.9);
+    background-color: transparent;
+    padding: 1rem;
+    border-radius: 15px;
+}
+
+#uploaded-file:empty {
+    display: none;
+}
+
+@media (max-width: 70rem) {
+    body {
+        grid-template-areas:
+            "nav nav nav nav nav"
+            "gal gal gal gal gal";
+    }
+    .bar {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        z-index: 2;
+        display: flex;
+    }
+
+    .hide-bar {
+        display: none;
+    }
+
+    #menuBar {
+        display: unset;
+    }
+
+    #profile-photo {
+        width: 20rem;
+    }
+
+    .delete-mpic, .lock-mpic {
+        transform: translateY(0);
+    }
+}

@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=0.86, maximum-scale=5.0, minimum-scale=0.86">
+    <link rel="stylesheet" href="../public/css/default.css">
+    <link rel="stylesheet" href="../public/css/forms.css">
+    <link rel="stylesheet" href="../public/css/mainPage.css">
+    <link rel="stylesheet" href="../public/css/myAccount.css">
+    <link rel="stylesheet" href="../public/css/animations.css">
+    <link rel="stylesheet" href="../public/css/fancyTweet.css">
+    <link rel="preload" as="image" href="./public/images/darkBackground.webp">
+    <link rel="preload" as="image" href="./public/images/lightBackground.webp">
+    <script src="https://kit.fontawesome.com/b21388a08f.js" crossorigin="anonymous"></script>
+    <title>My account</title>
+</head>
+<body>
+    <div class="blur-background"></div>
+    <nav>
+        <div class="logo">
+            <img src="../public/images/logo1.png" alt="">
+        </div>
+        <div class="search">
+            <input type="text" id="search" placeholder="search by keyword">
+            <label for="search"><i class="fa-solid fa-magnifying-glass"></i></label> 
+            <div class="criteria">
+                <button id="criteria-button"><i class="fa-solid fa-sliders"></i></button>
+                <div class="slider-container hidden">
+                    <div class="slider-search">
+                        <p>Choose post date</p>
+                        <div class="date-interval">
+                            <input id="min-date" type="date">
+                            <input id="max-date" type="date">
+                        </div>
+                    </div>
+                    <div class="slider-search">
+                        Number of likes
+                        <div class="likes-interval">
+                            <input id="min-likes" type="number" min="0">
+                            <input id="max-likes" type="number" min="0">
+                        </div>
+                    </div>
+                    <div class="slider-search">
+                        Platform
+                            <select name="platform" id="platform-select">
+                                <option value="">All</option>
+                                <option value="mpic">M-PIC</option>
+                                <option value="unsplash">Unsplash</option>
+                                <option value="twitter">Twitter</option>
+                            </select>
+                    </div>
+                    <button id="apply" type="button" onclick="">Apply</button>
+                </div>
+            </div>
+        </div>
+        <div>
+            <button><i class="fa fa-compass" onclick="toPage('./explore');"></i></button>
+            <button onclick="changeTheme(this)" id="theme"><i class="fa-solid fa-sun"></i></button>
+            <button id="menuBar" onclick="showBar();"><i class="fa-solid fa-bars"></i></button>
+        </div>
+    </nav>
+    <div class="bar hide-bar">
+            <img id="profile-photo" src="../public/images/unknown.png" alt="">
+            <div class="main-options">
+                <button onclick="showGallery();" id="myphotos">My photos</button>
+                <button onclick="showConnections();">Connections</button>
+                <button onclick="showSettings();" id="settings-button">Settings</button>
+            </div>
+            <div class="other-options">
+                <button class="other-option" onclick="toPage('./logout');">
+                    <i class="fa-solid fa-sign-out" aria-hidden="true"></i>
+                    Logout
+                </button>
+            </div>
+    </div>
+    
+    <div class="gallery active">
+        <div class="gallery-item animGL">
+            <button id="button-upload-image"><i class="fa-solid fa-cloud-arrow-up"></i>Upload</button>
+        </div>
+    </div>
+
+    <div class="connections hidden">
+        <!-- <div id="instagram" class="animG">
+            <div class="connection">
+               <i class="fa fa-instagram"></i>
+               <button class="connect-button">Connect</button>
+               <button class="connect-button hidden" onclick="disconnect()">Disconnect</button>
+            </div>
+        </div> -->
+        <div id="unsplash" class="animG">
+            <div class="connection">
+               <i class="fab fa-unsplash"></i>
+               <button id="unsplash-connect" class="connect-button {{unsplash.connected}}" onclick = "connect()">Connect</button>
+               <button id="unsplash-disconnect" class="connect-button connected {{unsplash.disconnected}}" onclick="disconnect('unsplash')">Disconnect</button>
+            </div>
+        </div>
+        <div id="twitter" class="animG">
+            <div class="connection">
+               <i class="fa fa-twitter"></i>
+               <button id="twitter-connect" class="connect-button" onclick="twitter();">Connect</button>
+               <button id="twitter-disconnect" class="connect-button connected" onclick="disconnectTwitter();">Disconnect</button>
+            </div>
+        </div>
+    </div>
+    <div class="settings hidden animG">
+        <form class="form">
+            <div class="form-data">
+                <div class="form-field">
+                    <label for="fname">First name</label>
+                    <div class="edit-field">
+                        <div class="tooltip-container">
+                            <input type="text" id="fname" value="" disabled>
+                            <i class="fa fa-pencil-square-o" onclick="permitEdit(this);"></i>
+                            <div class="tooltip hidden" id="fname-error">
+                                <p>Cannot be null!</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-field">
+                    <label for="lname">Last name</label>
+                    <div class="edit-field">
+                        <div class="tooltip-container">
+                        <input type="text" id="lname" disabled>
+                        <i class="fa fa-pencil-square-o" onclick="permitEdit(this);"></i>
+                            <i class="fa fa-pencil-square-o" onclick="permitEdit(this);"></i>
+                            <div class="tooltip hidden" id="lname-error">
+                                <p>Cannot be null!</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <p class="hidden" id="update-user-response"></p>
+            </div>
+            <div class="form-submit">
+                <!-- <button type="button">Change password</button> -->
+                <button type="button" onclick="updateUserData();">Save</button>
+                <button type="button" id="delete" onclick="deleteMyAccount();">
+                    <i class="fa-solid fa-trash" aria-hidden="true"></i>
+                    Delete account
+                </button>
+                <p class="hidden" id="delete-account-error">Sorry, something went wrong ...</p>
+            </div>
+        </form>
+    </div>
+    <div id="modal" class="modal">
+        <button id="close-btn-modal" onclick="removeImageInfo();"><i class="fa-solid fa-times"></i></button>
+        <button onclick="getEdit()">
+            <i class="fa fa-edit"></i>   
+            Edit         
+        </button>
+        <div class="image animG">
+            <img data-unsplash-id="" id="photo-source" src="#" alt="">
+            <div class="image-info"></div>
+        </div>
+    </div>
+    <div id="twitter-pop-up" class="modal">
+        <div class="tweet-fancy-input">
+            <input id="tweet-input" class="tweet-text" type="text" placeholder="What do you want to tweet?">
+            <button id="tweet-enter" class="tweet-enter" type="button" onclick="sendTweet();"><i id="tweet-icon" class="fa fa-twitter tweet"></i></button>
+        </div>     
+    </div>
+    <div id="upload-modal" class="modal">
+        <div class="upload-form">
+            <label for="upload-file" class="upload-file-design">Choose an image</label>
+            <input id="upload-file" type="file" accept="image/*">
+            <input id="upload-description" type="text" placeholder="add description">
+            <p id="uploaded-file"></p>
+            <button id="upload-submit-button" type="button" onclick="uploadImage()">Submit</button>
+        </div>
+    </div>
+    <script src="./public/js/theme.js"></script>
+    <script src="./public/js/changeLogo.js"></script>
+    <script defer src="./public/js/modal.js"></script>
+    <script src="./public/js/anim.js"></script>
+    <script defer src="./public/js/toPage.js"></script>
+    <script defer src="./public/js/showActive.js"></script>
+    <script defer src="./public/js/piexif.js"></script>
+    <script defer src="./public/js/galleryUtil.js"></script>
+    <script defer src="./public/js/myPhotos.js"></script>
+    <script defer src="./public/js/getEdit.js"></script>
+    <script defer src="./public/js/unsplash.js"></script>
+    <script defer src="./public/js/criteria.js"></script>
+    <script defer src="./public/js/settings.js"></script>
+    <script defer src="./public/js/deleteAccount.js"></script>
+    <script defer src="./public/js/twitter.js"></script>
+</body>
+</html>

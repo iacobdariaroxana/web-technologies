@@ -1,0 +1,370 @@
+@import "fontImporter.css";
+
+body {
+    display: grid;
+    max-height: 100vh;
+    grid-template-columns: repeat(5, 1fr);
+    grid-template-rows: auto 1fr;
+    overflow: hidden;
+}
+
+nav {
+    grid-area: nav;
+    display: flex;
+    position: relative;
+    width: 100%;
+    background-color: var(--menu-color);
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 1rem;
+    z-index: 3;
+    padding-left: 4rem;
+}
+
+nav .search {
+    width: 40%;
+    display: flex;
+    align-items: center;
+    position: relative;
+}
+
+.search label {
+    position: absolute;
+    right: 4rem;
+}
+
+.fa-magnifying-glass {
+    color: var(--menu-color);
+}
+
+nav div {
+    display: flex;
+}
+
+nav i {
+    color: var(--button-color);
+}
+
+nav label {
+    font-size: 1.5rem;
+}
+
+nav input,nav select {
+    height: 2rem;
+    width: 100%;
+    border: 1px solid var(--button-color);
+    background-color: var(--input-background);
+    padding: 0 0.5rem;
+    caret-color: var(--main-color);
+    border-radius: 5px;
+}
+
+nav option {
+    background-color: var(--menu-color);
+}
+
+nav input:focus {
+    outline: none;
+}
+
+nav button,
+nav a,
+#theme {
+    background-color: transparent;
+    font-size: 1.8rem;
+    border: none;
+    padding: 0.5rem 0.8rem;
+}
+
+.gallery {
+    grid-area: gal;
+    max-height: 100%;
+    overflow: auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(15rem, 1fr));
+    grid-auto-rows: max-content;
+    gap: 1rem;
+    padding: 1rem;
+}
+
+.gallery-item {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 4px;
+    overflow: hidden;
+    aspect-ratio: 1/1;
+    transform: scale(0);
+    position: relative;
+}
+
+.gallery-item:hover {
+    cursor: pointer;
+    box-shadow: 0 0 0 0.15rem var(--menu-color);
+}
+
+.watermark {
+    font-size: 2rem;
+    opacity: 0.5;
+}
+
+.gallery-item img {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.modal {
+    backdrop-filter: blur(20px);
+    display: none;
+    flex-direction: column;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    max-width: 100vw;
+    max-height: 100vh;
+    justify-content: center;
+    align-items: center;
+    padding: 3rem;
+    z-index: 3;
+    gap: 1rem;
+}
+
+.modal .image {
+    display: flex;
+    max-width: 90vw;
+}
+
+.modal img {
+    max-height: 80vh;
+    max-width: 90vw;
+    display: block;
+}
+
+.modal .image-info {
+    background-color: var(--menu-color);
+    width: 21rem;
+    display: flex;
+    flex-direction: column;
+    padding: 1.5rem;
+    gap: 2rem;
+}
+
+.image-info .tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+.image-info .info {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.5rem;
+    position: relative;
+    max-width: fit-content;
+}
+
+.tags .tag {
+    background-color: var(--button-color);
+    padding: 0.3rem;
+    border-radius: 5px;
+}
+
+.tags .tag:hover {
+    background-color: var(--main-color);
+    color: var(--button-color);
+    font-weight: bold;
+}
+
+.image-info .fa-heart,
+.image-info .fa-cloud-arrow-down,
+.image-info .fa-eye {
+    font-size: 2rem;
+}
+
+.fa-location-dot,
+.fa-feather-pointed,
+.fa-tags {
+    font-size: 1.5rem;
+}
+
+.info-type1-container a {
+    font-size: 1.95rem;
+}
+
+.info .info-type1 {
+    position: absolute;
+    bottom: 55%;
+    left: 70%;
+    border-radius: 15px;
+    background-color: var(--button-color);
+    backdrop-filter: opacity(0.3);
+    padding: 0.2rem 0.35rem;
+    font-size: 0.7rem;
+}
+
+.image-info .info-type1-container {
+    display: flex;
+    justify-content: space-around;
+}
+
+.info .info-type2 {
+    word-break: break-word;
+}
+
+input::placeholder {
+    color: rgba(255, 255, 255, 0.7);
+}
+
+#close-btn-modal {
+    position: absolute;
+    top: 1.5rem;
+    right: 1.5rem;
+    border: none;
+    font-size: 1.8rem;
+    background-color: transparent;
+}
+
+#close-btn-modal i {
+    color: var(--button-color);
+}
+
+.image-buttons {
+    display: flex;
+    flex-direction: row;
+    position: absolute;
+    top: 0.5rem;
+    right: 0.5rem;
+    gap: 0.35rem;
+    transform: translateY(-130%);
+    transition: transform 0.5s ease-in-out;
+}
+
+.image-buttons button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.5rem;
+    border: none;
+    background-color: var(--main-color);
+    border-radius: 5px;
+    padding: 0.2rem;
+}
+
+.gallery-item:hover .image-buttons {
+    transform: translateY(0);
+}
+
+.image-buttons .fa-reddit {
+    color: #ff5700;
+}
+
+.image-buttons .fa-instagram {
+    color: #c13584;
+}
+
+.image-buttons .fa-unsplash {
+    color: #000;
+}
+.image-buttons .fa-twitter {
+    color: #1da1f2;
+}
+
+.fa-edit {
+    color: var(--main-color);
+}
+
+.logo {
+    position: absolute;
+    display: flex;
+    left: 1rem;
+    flex-direction: column;
+}
+
+.logo img {
+    max-height: 2.5rem;
+}
+
+.modal button {
+    background-color: var(--button-color);
+    font-family: "Lora", serif;
+    font-size: 1.5rem;
+    border-radius: 5px;
+    border: none;
+    padding: 0.5rem;
+}
+
+.criteria {
+    position: relative;
+    min-height: 100%;
+}
+
+.slider-container {
+    position: absolute;
+    background-color: var(--menu-color);
+    top: 100%;
+    left: 0.5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-radius: 0 0px 5px 5px;
+    backdrop-filter: blur(20px);
+    padding-bottom: 1rem;
+}
+
+.slider-search {
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.slider-container button {
+    border: none;
+    background-color: var(--button-color);
+    border-radius: 5px;
+    font-size: 1rem;
+    width: 50%;
+}
+
+.date-interval, .likes-interval {
+    display: flex;
+    gap: 0.35rem;
+}
+
+@media (max-width: 70rem) {
+    .modal {
+        padding: 1rem;
+    }
+    .gallery {
+        grid-template-columns: repeat(auto-fill, minmax(10rem, 1fr));
+    }
+    .image {
+        flex-direction: column;
+    }
+    .modal .image-info {
+        width: 100%;
+    }
+    .modal {
+        justify-content: flex-start;
+        overflow: auto;
+    }
+    input::placeholder {
+        color: transparent;
+    }
+    body {
+        overflow: auto;
+    }
+    .date-interval, .likes-interval {
+        flex-direction: column;
+    }
+
+    .image-buttons {
+        transform: translateY(0);
+    }
+}
