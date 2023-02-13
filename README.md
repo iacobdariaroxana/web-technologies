@@ -17,5 +17,4 @@
 - Florea Bogdan (2B3)
 
 ## 📷
-- Check out our app here: [m-pic]( https://m-pic.herokuapp.com/ )
 - Watch our video demo: [here]( https://www.youtube.com/watch?v=tZ_KoTgDZAA )
